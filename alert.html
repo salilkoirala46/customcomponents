@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root{
+            --blue:#0d6efd;
+            --white:#ffffff;
+            --black:#000000;
+            --info:#20c997;
+            --bluehover:#0056b3;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            height:100vh;
+        }
+        button{
+            background: var(--blue);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 1rem;/*by default default html font size is 16px, so 1 rem is 16px */
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        button:hover{
+            background: var(--bluehover);
+            border:1px solid var(--black);
+        }
+
+        #alert{
+            border : 1px solid var(--black);
+            padding: 5px;
+            border-radius: 5px;
+            position:absolute;
+            top:20px;
+            background:var(--info);
+            opacity:0;
+            visibility:hidden;
+            transition:opacity 0.5s ease-in-out, visibility 0.5s ease-in-out
+        }
+        #alert.show{
+            opacity:1;
+            visibility:visible;
+        }
+    </style>
+</head>
+<body>
+    <div id="alert">
+        Nice, you triggered this alert message ! <span><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    <button type="button" name="live_alert" id="liveAlert">Show live alert</button>
+    
+    <script>
+        document.getElementById("liveAlert").addEventListener("click",(e) => {
+            let alertBox = document.getElementById("alert")
+            alertBox.classList.add("show");
+            setTimeout(() => {
+                alertBox.classList.remove("show");
+            },3000)
+        })
+    </script>
+</body>
+</html>

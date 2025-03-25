@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,400&display=swap');
+        :root {
+            --blue: #1e90ff;
+            --white: #ffffff;
+        }
+        html{
+            font-family: 'Roboto', 'sans serif';
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .accordion{
+            width: 40vw;
+        }
+        ul{
+            list-style-type: none;
+        }
+        ul>li{
+            padding: 5px;
+            border: 1px solid var(--blue);
+            position:relative;
+        }
+        ul>li:first-child{
+            border-radius: 10px 10px 0 0;
+        }
+        ul>li:last-child{
+            border-radius: 0 0 10px 10px;
+        }
+        ul>li>span{
+            position:absolute;
+            right:10px;
+            top: 20px;
+        }
+        ul>li>p{
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+            margin-top: 0;
+            padding: 0;
+            font-family:'sans serif';
+        }
+        ul > li.open > p{
+            max-height: 100px;
+            padding-top:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="accordion">
+        <ul>
+            <li>
+                <div class="heading">Accordion Item#1</div>
+                <span class="accordionSpan"><i class="fa-solid fa-angle-down"></i></span>
+                <p>This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
+            </li>
+            <li>
+                <div class="heading">Accordion Item#2</div>
+                <span class="accordionSpan"><i class="fa-solid fa-angle-down"></i></span>
+                <p>This is the second item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
+            </li>
+            <li>
+                <div class="heading">Accordion Item#3</div>
+                <span class="accordionSpan"><i class="fa-solid fa-angle-down"></i></span>
+                <p>This is the third item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        let accordionSpan = document.getElementsByClassName("accordionSpan");
+
+        for(let ch of accordionSpan){
+            ch.addEventListener("click", (e) => {
+                let li = e.currentTarget.parentElement;
+                li.classList.toggle("open");
+            })
+        }
+    </script>
+</body>
+</html>

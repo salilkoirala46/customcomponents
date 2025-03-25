@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar sample</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        header{
+            border: 1px solid;
+            color: #fff;
+            background-color: #222;
+            font-size: 2rem;
+            padding : 1.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav #main_menu{
+            transform: translateY(-40px);
+            transition: transform 0.3s ease-in-out;
+        }
+        nav ul{
+            display:flex;
+            justify-content: flex-start;
+        }
+        nav ul li{
+            padding:0px 10px;
+        }
+        nav #main_menu.active{
+            transform: translateY(0);
+        }
+        nav ul a{
+            color:#fff;
+        }
+
+        nav .mobile_menu{
+            display: none;
+            position: relative;
+        }
+
+        footer{
+            position:fixed;
+            width:100%;
+            bottom:0;
+        }
+        
+        @media (max-width: 600px){
+            nav ul{
+                display:none;
+            }
+            nav .mobile_menu{
+                display: block;
+            }
+            #menuToggle{
+                font-size:2rem;
+            }
+            #menuCloseToggle{
+                font-size:50px;
+            }
+            nav #mobile_menu_list {
+                display: block;
+                position: absolute;
+                top: 40px;
+                right: 0;
+                width: 200px;
+                border-radius: 5px;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /*adds shadow property outside div bar*/
+                padding: 10px 0px;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+                /* pointer-events: none; */
+            }
+
+            nav #mobile_menu_list.active {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+            #mobile_menu_list>li{
+                padding: 5px 5px;
+            }
+            nav #menuCloseToggle{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            Salil Koirala
+        </div>
+        <nav>
+            <ul id="main_menu">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Work Experience</a></li>
+                <li><a href="#">Resume</a></li>
+                <li><a href="#">Contact Me</a></li>
+            </ul>
+            <div class="mobile_menu">
+                <a href="#" id="menuToggle"><i class="fa-solid fa-bars"></i></a>
+                <a href="#" id="menuCloseToggle"><i class="fa-solid fa-xmark"></i></a>
+                <ul id="mobile_menu_list">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Work Experience</a></li>
+                    <li><a href="#">Resume</a></li>
+                    <li><a href="#">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <footer>
+        <div>This is footer</div>
+    </footer>
+    <script>
+        document.getElementById("menuToggle").addEventListener("click", function(event){
+            document.getElementById("menuToggle").style.display="none";
+            document.getElementById("menuCloseToggle").style.display="block";
+            document.getElementById("mobile_menu_list").classList.add("active");
+        });
+        document.getElementById("menuCloseToggle").addEventListener("click", function(event){
+            document.getElementById("menuToggle").style.display="block";
+            document.getElementById("menuCloseToggle").style.display="none";
+            document.getElementById("mobile_menu_list").classList.remove("active");
+        });
+        document.getElementById("main_menu").classList.remove("active");
+        document.getElementById("main_menu").classList.add("active");
+    </script>
+</body>
+</html>

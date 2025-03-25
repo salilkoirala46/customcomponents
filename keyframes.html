@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keyframes</title>
+
+    <style>
+        body{
+            /* display:flex;
+            justify-content: center; */
+            /* align-items:center; */
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        
+        .box1{
+            border : 1px solid black;
+            width:5vw;
+            height:5vw;
+            background: red;
+            animation: mymove 10s linear infinite;
+            position: relative;
+        }
+
+        .box2{
+            border : 1px solid black;
+            /* border-radius: 50%; */
+            width:5vw;
+            height:5vw;
+            background: purple;
+            animation: spin 2s linear infinite; /* linear hear makes the spin consistent */
+            position: relative;
+        }
+        @keyframes mymove {
+            0%{
+                top: 0px;
+                top:0px;
+            }
+            25%{
+                top:0px;
+                top:25vh;
+                background:black;
+            }
+            50%{
+                top:0px;
+                top:50vh;
+                background:blue;
+            }
+            75%{
+                top:0px;
+                top:75vh;
+                background:green;
+            }
+            100%{
+                top:0px;
+                top:100vh;
+                background:purple;
+            }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+        <div class="box1">
+        </div>
+        <div class="box2"></div>
+</body>
+</html>
