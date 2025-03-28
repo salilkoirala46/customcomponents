@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs html</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swa');
+        
+        :root{
+            font-family: 'Poppins', 'Montserrat';
+            --tab-heading-color: #f1f1f1;
+            --border-color: #ccc;
+            --li-hover:#ccc;
+        }
+        
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            border: 1px solid var(--border-color);
+            width: 50vw;
+            height: 50vh;
+        }
+        .tabs{
+            background: var(--tab-heading-color);
+            border: 1px solid var(--border-color);
+            height: 40px;
+        }
+
+        .tabs > ul{
+            list-style-type: none;
+        }
+
+        ul>li{
+            display: inline;
+            font-size: 24px;
+            padding: 5px 0.6rem;
+            
+        }
+        
+        ul>li:hover{
+            background: var(--li-hover);
+            cursor: pointer;
+        }
+        ul>li.active{
+            background: var(--li-hover);
+        }
+        
+        .tabcontent{
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.9s ease-in-out;
+            padding: 0 10px;
+        }
+        .open{
+            opacity: 1;
+            height:auto;
+            visibility: visible; /* last one takes precedence */
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <ul>
+                <li class="tab">London</li>
+                <li class="tab">Paris</li>
+                <li class="tab">Tokyo</li>
+            </ul>
+        </div>
+        <div id="London" class="tabcontent">
+            <h3>London</h3>
+            <p>London is the capital city of England.</p>
+        </div>
+        <div id="Paris" class="tabcontent">
+            <h3>Paris</h3>
+            <p>Paris is the capital of France.</p> 
+        </div>
+        <div id="Tokyo" class="tabcontent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+        </div>
+    </div>
+    
+
+    <script>
+        let tabs = document.getElementsByClassName("tab");
+        let tabContents = document.getElementsByClassName("tabcontent");
+        for(tab of tabs){
+            tab.addEventListener("click", (e) => {
+                
+                for(let content of tabContents){
+                    content.classList.remove("open");
+                }
+
+                for(let t of tabs){
+                    t.classList.remove("active");
+                }
+                
+                e.currentTarget.classList.toggle("active");
+                document.getElementById(e.currentTarget.innerHTML).classList.toggle("open");
+            })
+        }
+
+    </script>
+</body>
+</html>

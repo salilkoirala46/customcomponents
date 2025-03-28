@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Tabs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swa');
+        :root{
+            font-family: 'Poppins', 'Montserrat';
+            --tab-heading-color: #f1f1f1;
+            --border-color: #ccc;
+            --li-hover:#ddd;
+            --li-active:#ccc;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:50vw;
+            height:50vh;
+            display: flex;
+            border: 1px solid var(--border-color)
+        }
+        .tabs{
+            background: inherit;
+            width:40%;
+            background:var(--tab-heading-color)
+        }
+        .tabs>button{
+            display: block;
+            border:0px;
+            padding:20px 20px;
+            font-size: 20px;
+            width: 100%;
+            text-align: left;
+            transition: 0.3s
+        }
+        .tabs>button:hover{
+            cursor: pointer;
+            background: var(--li-hover);
+        }
+        .tabs>button.active{
+            background: var(--li-active);
+        }
+        .tabcontent{
+            padding:0px 10px;
+            opacity: 0;
+            visibility: hidden;
+            height:0;
+            width: 0;
+        }
+        .open{
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+            width: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button type="button" class="tab">London</button>
+            <button type="button" class="tab">Paris</button>
+            <button type="button" class="tab">Tokyo</button>
+        </div>
+        <div id="London" class="tabcontent">
+            <h3>London</h3>
+            <p>London is the capital city of England.</p>
+        </div>
+        <div id="Paris" class="tabcontent">
+            <h3>Paris</h3>
+            <p>Paris is the capital of France.</p> 
+        </div>
+        <div id="Tokyo" class="tabcontent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+        </div>     
+    </div>
+    
+    <script>
+        let tabs = document.getElementsByClassName("tab");
+        let tabcontents = document.getElementsByClassName("tabcontent");
+        
+        for(let tab of tabs){
+            tab.addEventListener("click", (e) => {
+                console.log(e.currentTarget.innerHTML);
+
+                //remove active class from button 
+                for(let tab of tabs){
+                    tab.classList.remove('active');
+                }
+                // remove open class from all active tabcontents
+                for (let c of tabcontents){
+                    c.classList.remove("open");
+                }
+
+                //add active calls to the active tab
+                e.currentTarget.classList.add("active");
+                document.getElementById(e.currentTarget.innerHTML).classList.add("open");
+            })
+
+        }
+
+    </script>
+</body>
+</html>

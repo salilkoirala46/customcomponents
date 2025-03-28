@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu icon</title>
+    <style>
+        #menu-container{
+            cursor: pointer;
+        }
+        .bar1, .bar2, .bar3{
+            margin:6px 0px;
+            width:30px;
+            height:5px;
+            background-color: #000000;
+            transition: all 0.3s ease-in-out;
+        }
+        .change .bar1{
+            transform: translate(0, 11px) rotate(-45deg);
+        }
+        .change .bar2{
+            opacity: 0;
+        }
+        .change .bar3{
+            transform: translate(0, -11px) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-container">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+<script>
+    document.getElementById("menu-container").addEventListener("click", () => {
+        document.getElementById("menu-container").classList.toggle("change");
+    })
+</script>
+</body>
+</html>
