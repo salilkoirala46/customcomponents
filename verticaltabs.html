@@ -3,63 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertical Tabs</title>
+    <title>Responsive Vertical Tabs</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swa');
-        :root{
-            font-family: 'Poppins', 'Montserrat';
-            --tab-heading-color: #f1f1f1;
-            --border-color: #ccc;
-            --li-hover:#ddd;
-            --li-active:#ccc;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #007BFF;
+            --hover-color: #0056b3;
+            --background-light: #f9f9f9;
+            --border-color: #ddd;
+            --active-color: #e0e0e0;
+            --text-color: #333;
         }
 
-        *{
-            margin:0;
-            padding:0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        .container{
-            width:50vw;
-            height:50vh;
+
+        body {
             display: flex;
-            border: 1px solid var(--border-color)
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--background-light);
+            padding: 20px;
         }
-        .tabs{
-            background: inherit;
-            width:40%;
-            background:var(--tab-heading-color)
+
+        .container {
+            display: flex;
+            width: 60vw;
+            min-height: 50vh;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .tabs>button{
-            display: block;
-            border:0px;
-            padding:20px 20px;
-            font-size: 20px;
-            width: 100%;
+
+        .tabs {
+            width: 35%;
+            background: var(--background-light);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs button {
+            border: none;
+            background: transparent;
+            padding: 15px 20px;
+            font-size: 16px;
             text-align: left;
-            transition: 0.3s
-        }
-        .tabs>button:hover{
+            width: 100%;
+            color: var(--text-color);
+            transition: 0.3s;
+            border-bottom: 1px solid var(--border-color);
             cursor: pointer;
-            background: var(--li-hover);
+            outline: none;
         }
-        .tabs>button.active{
-            background: var(--li-active);
+
+        .tabs button:hover {
+            background: var(--hover-color);
+            color: white;
         }
-        .tabcontent{
-            padding:0px 10px;
+
+        .tabs button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .tabcontent {
+            flex-grow: 1;
+            padding: 20px;
             opacity: 0;
             visibility: hidden;
-            height:0;
-            width: 0;
-        }
-        .open{
-            opacity: 1;
-            visibility: visible;
-            height: auto;
-            width: auto;
+            transform: translateX(20px);
+            transition: all 0.3s ease-in-out;
         }
 
+        .tabcontent.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 90vw;
+            }
+
+            .tabs {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .tabs button {
+                flex: 1;
+                text-align: center;
+                border-bottom: none;
+                border-right: 1px solid var(--border-color);
+            }
+
+            .tabs button:last-child {
+                border-right: none;
+            }
+
+            .tabcontent {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -75,38 +134,37 @@
         </div>
         <div id="Paris" class="tabcontent">
             <h3>Paris</h3>
-            <p>Paris is the capital of France.</p> 
+            <p>Paris is the capital of France.</p>
         </div>
         <div id="Tokyo" class="tabcontent">
             <h3>Tokyo</h3>
             <p>Tokyo is the capital of Japan.</p>
-        </div>     
+        </div>
     </div>
-    
+
     <script>
-        let tabs = document.getElementsByClassName("tab");
-        let tabcontents = document.getElementsByClassName("tabcontent");
-        
-        for(let tab of tabs){
+        let tabs = document.querySelectorAll(".tab");
+        let tabContents = document.querySelectorAll(".tabcontent");
+
+        tabs.forEach(tab => {
             tab.addEventListener("click", (e) => {
-                console.log(e.currentTarget.innerHTML);
+                let targetId = e.currentTarget.innerText;
 
-                //remove active class from button 
-                for(let tab of tabs){
-                    tab.classList.remove('active');
-                }
-                // remove open class from all active tabcontents
-                for (let c of tabcontents){
-                    c.classList.remove("open");
-                }
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove("active"));
+                // Hide all tab content
+                tabContents.forEach(content => content.classList.remove("open"));
 
-                //add active calls to the active tab
+                // Add active class to clicked tab
                 e.currentTarget.classList.add("active");
-                document.getElementById(e.currentTarget.innerHTML).classList.add("open");
-            })
+                // Show the corresponding content
+                document.getElementById(targetId).classList.add("open");
+            });
+        });
 
-        }
-
+        // Set default open tab
+        tabs[0].classList.add("active");
+        tabContents[0].classList.add("open");
     </script>
 </body>
 </html>
