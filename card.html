@@ -1,101 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Card</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swa');
-        
-        :root{
-            --black: #000000;
-            --blue:#0d6efd;
-            --white:#ffffff;
-            --bluehover:#0056b3;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --bodybackground: #f8f9fa;
-            --paragraph-text: #555;
-        }
-        * {
-            margin:0;
-            padding:0;
-            box-sizing: border-box;
-        }
-        
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height:100vh;
-            background-color: var(--bodybackground);
-            font-family: 'Poppins','Montserrat';
-        }
-        .card{
-            border-radius: 10px;
-            max-width: 350px; /*this fix width problem between image and div */
-            background: var(--white);
-            overflow: hidden;
-            box-shadow: 0 4px 10px var(--shadow);
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover{
-            transform: translateY(-5px);
-        }
-        .card-body{
-            padding:20px;
-        }
-        .card-thumbnail img{
-            object-fit: cover;
-            max-height:200px;
-            width:100%;
-        }
-        .card-title{
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom:10px;
-        }
-        .card-body p{
-            font-size: 0.9rem;
-            color: var(--paragraph-text);
-            line-height: 1.5; /* height of one line in paragraph */
-        }
-        .card-button{
-            background: var(--blue);
-            font-size:1rem;
-            color:var(--white);
-            transition: all 0.5s ease-in-out;
-            padding: 0.6rem 1rem;
-            border:none;
-            border-radius: 5px;
-            cursor:pointer;
-            margin-top: 10px;
-            display: inline-block;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .card-button:hover{
-            background : var(--bluehover);
-            transform: scale(1.05);
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swa");
 
-        /* Response Design */
-        @media (max-width: 400px) {
-            .card {
-                max-width: 80%;
-            }
+      :root {
+        --black: #000000;
+        --blue: #0d6efd;
+        --white: #ffffff;
+        --bluehover: #0056b3;
+        --shadow: rgba(0, 0, 0, 0.1);
+        --bodybackground: #f8f9fa;
+        --paragraph-text: #555;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: var(--bodybackground);
+        font-family: "Poppins", "Montserrat";
+      }
+      .card {
+        border-radius: 10px;
+        max-width: 350px; /*this fix width problem between image and div */
+        background: var(--white);
+        overflow: hidden;
+        box-shadow: 0 4px 10px var(--shadow);
+        transition: transform 0.3s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card-body {
+        padding: 20px;
+      }
+      .card-thumbnail img {
+        object-fit: cover;
+        max-height: 200px;
+        width: 100%;
+      }
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .card-body p {
+        font-size: 0.9rem;
+        color: var(--paragraph-text);
+        line-height: 1.5; /* height of one line in paragraph */
+      }
+      .card-button {
+        background: var(--blue);
+        font-size: 1rem;
+        color: var(--white);
+        transition: all 0.5s ease-in-out;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        display: inline-block;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .card-button:hover {
+        background: var(--bluehover);
+        transform: scale(1.05);
+      }
+
+      /* Response Design */
+      @media (max-width: 400px) {
+        .card {
+          max-width: 80%;
         }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="card">
-        <div class="card-thumbnail">
-            <img src="https://techcrunch.com/wp-content/uploads/2020/04/Google-Card-Debit.jpg?resize=1153,617" alt="card image"/>
-        </div>
-        <div class="card-body">
-            <div class="card-title">Card title</div>
-            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button type="button" class="card-button">Go somewhere</button>
-        </div>       
+      <div class="card-thumbnail">
+        <img
+          src="https://techcrunch.com/wp-content/uploads/2020/04/Google-Card-Debit.jpg?resize=1153,617"
+          alt="card image"
+        />
+      </div>
+      <div class="card-body">
+        <div class="card-title">Card title</div>
+        <p>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <button type="button" class="card-button">Go somewhere</button>
+      </div>
     </div>
-</body>
+  </body>
 </html>

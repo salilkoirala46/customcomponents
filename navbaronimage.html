@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbaronimage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100vw;
+        position: relative;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background-image: url("https://images.pexels.com/photos/1420440/pexels-photo-1420440.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=2500");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .container .navbar {
+        position: absolute;
+        top: 50px;
+      }
+      .navbar {
+        background: black;
+        margin-left: 40px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </body>
+</html>

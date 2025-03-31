@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mode</title>
-    <!-- <script src="https://use.fontawesome.com/478951844a.js"></script> --> 
-     <!-- previous link does not work. below links work -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<style>
-    body{
-        display:flex;
+    <!-- <script src="https://use.fontawesome.com/478951844a.js"></script> -->
+    <!-- previous link does not work. below links work -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      body {
+        display: flex;
         justify-content: center;
-    }
-    .buttonmode{
+      }
+      .buttonmode {
         border-radius: 50px;
         font-size: 20px;
-    }
-    .darkbackground{
-        background:black;
-        color:white;
-    }
-    .whitebackground{
-        background:white;
-        color:black;
-    }
-</style>
-</head>
-<body>
-    <button type="button" class="buttonmode darkmode" value="darkmode"><i class="fa-solid fa-moon"></i></button>
-    <button type="button" class="buttonmode whitemode" value="whitemode"><i class="fa-regular fa-moon"></i></button>
-<script>
-    let values = document.getElementsByTagName('button');
-    for (const value of values){
-        value.addEventListener("click", function(event){
-            if(event.currentTarget.value == "darkmode"){
-                document.body.style.background = "black";
-                document.body.style.color = "white";
-            } else {
-                document.body.style.background = "white";
-                document.body.style.color = "black";
-            }
-        })
-    }
-</script>
-</body>
+      }
+      .darkbackground {
+        background: black;
+        color: white;
+      }
+      .whitebackground {
+        background: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" class="buttonmode darkmode" value="darkmode">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <button type="button" class="buttonmode whitemode" value="whitemode">
+      <i class="fa-regular fa-moon"></i>
+    </button>
+    <script>
+      let values = document.getElementsByTagName("button");
+      for (const value of values) {
+        value.addEventListener("click", function (event) {
+          if (event.currentTarget.value == "darkmode") {
+            document.body.style.background = "black";
+            document.body.style.color = "white";
+          } else {
+            document.body.style.background = "white";
+            document.body.style.color = "black";
+          }
+        });
+      }
+    </script>
+  </body>
 </html>

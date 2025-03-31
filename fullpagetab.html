@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Page Tab</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      :root {
+        --homeColor: #f44336;
+        --newsColor: #04aa6d;
+        --contactColor: #2196f3;
+        --aboutColor: #ff5722;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins";
+        height: 100%;
+      }
+      .tabs {
+        display: flex;
+      }
+      .tabs button {
+        text-align: center;
+        border: none;
+        width: 25vw;
+        height: 50px;
+      }
+      .tabs button.active {
+        background: var(--homeColor);
+      }
+      .tabcontent {
+        color: white;
+        padding: 0px 20px;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .open {
+        opacity: 1;
+        visibility: visible;
+        height: 100vh;
+        background: var(--homeColor);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabs">
+      <button type="button" class="tab active">Home</button>
+      <button type="button" class="tab">News</button>
+      <button type="button" class="tab">Contact</button>
+      <button type="button" class="tab">About</button>
+    </div>
+    <div id="home" class="tabcontent open">
+      <h1>Home</h1>
+      <p>Home is where the heart is</p>
+    </div>
+    <div id="news" class="tabcontent">
+      <h1>News</h1>
+      <p>Some news this fine day!</p>
+    </div>
+    <div id="contact" class="tabcontent">
+      <h1>Contact</h1>
+      <p>Get in touch, or swing by for a cup of coffee.</p>
+    </div>
+    <div id="about" class="tabcontent">
+      <h1>About</h1>
+      <p>Who we are and what we do.</p>
+    </div>
+
+    <script>
+      let tabs = document.querySelectorAll(".tab");
+      let tabContents = document.querySelectorAll(".tabcontent");
+      let color = {
+        home: "#f44336",
+        news: "#04aa6d",
+        contact: "#2196f3",
+        about: "#ff5722",
+      };
+      console.log(tabs);
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", (e) => {
+          tabs.forEach((t) => {
+            t.classList.remove("active");
+            t.style.background = "none";
+          });
+          tabContents.forEach((tc) => tc.classList.remove("open"));
+
+          e.currentTarget.classList.add("active");
+          targetid = e.currentTarget.innerHTML.toLowerCase();
+
+          document.getElementById(targetid).classList.add("open");
+          document.getElementById(targetid).style.background = color[targetid];
+          e.currentTarget.style.background = color[targetid];
+        });
+      });
+      console.log(document.getElementsByClassName("tab"));
+    </script>
+  </body>
+</html>
