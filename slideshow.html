@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow html</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .images{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slideshow_images{
+            position: absolute;
+            width:100vw;
+            height:100vh;
+            object-fit:cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .active{
+            opacity: 1;
+        }
+        .buttongroup{
+            position:absolute;
+            bottom:50px;
+            left:50%;
+            transform:translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .buttongroup i{
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .buttongroup i.active{
+            opacity: 1;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="images">
+        <img src="https://images.pexels.com/photos/30929494/pexels-photo-30929494/free-photo-of-adventurer-amidst-giant-cacti-in-uyuni-bolivia.jpeg?" class="slideshow_images active" alt="image1" id="button1">
+        <img src="https://images.pexels.com/photos/8226701/pexels-photo-8226701.jpeg" class="slideshow_images" alt="image2" id="button2">
+        <img src="https://images.pexels.com/photos/16817303/pexels-photo-16817303/free-photo-of-close-up-of-an-orange-flower-and-a-bee.jpeg" class="slideshow_images" alt="image3" id="button3">
+        <img src="https://images.pexels.com/photos/16480702/pexels-photo-16480702/free-photo-of-yellow-crocuses-growing-in-the-garden.jpeg" class="slideshow_images" alt="image4" id="button4">
+    </div>
+    <div class="buttongroup">
+        <i data-target="button1" class="fa-solid fa-circle"></i>
+        <i data-target="button2" class="fa-solid fa-circle"></i>
+        <i data-target="button3" class="fa-solid fa-circle"></i>
+        <i data-target="button4" class="fa-solid fa-circle"></i>
+    </div>
+    <script>
+        let buttons = document.querySelectorAll("i");
+        let images = document.querySelectorAll(".slideshow_images");
+        let index = 0;
+        let interval;
+
+        function changeSlide(nextIndex){
+            images.forEach((img, i) => {
+                img.classList.toggle("active", i === nextIndex);
+                buttons[i].classList.toggle("active", i === nextIndex);
+            });
+            index = nextIndex;
+        }
+
+        function autoSlide() {
+            interval = setInterval(() => {
+                let nextIndex = (index + 1) % images.length;
+                changeSlide(nextIndex);
+            },3000)
+        }
+
+        buttons.forEach((button,i) => {
+            button.addEventListener("click",(e) => {
+                clearInterval(interval);
+                changeSlide(i);
+                autoSlide();
+            })
+        })
+    </script>
+</body>
+</html>

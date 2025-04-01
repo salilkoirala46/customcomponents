@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swa');
+        
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        :root{
+            --black:#000000;
+            --white:#fff;
+        }
+        body{
+            font-family: "Arial";
+        }
+        a{
+            text-decoration: none;
+        }
+        .navbar{
+            background: var(--black);
+            display: flex;
+            justify-content: space-between;
+            color: var(--white);
+            max-height: 40px;
+        }
+
+        #menu-toggle{
+            display: none;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            cursor: pointer;
+            padding-right: 10px;
+        }
+        #navlinks {
+            display: flex;
+        }
+        #navlinks li{
+            list-style-type: none;
+            padding: 10px 20px;
+        }
+        #navlinks li a{
+            color: var(--white);
+        }
+        #navlinks li:hover{
+            background: red;
+        }
+        .menuoption{
+            position: absolute;
+            display: none;
+            flex-direction: column;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);          
+            
+        }
+        #News{
+            top:40px;
+            left:80px;
+            width: 80px;
+        }
+        #Dropdown{
+            top:40px;
+            left:165px;
+            width: 130px;
+        }
+        .menuoption a{
+            color: black !important;
+        }
+        .menuoption.active{
+            display: flex;
+        }
+        @media screen and (max-width:760px) {
+            #menu-toggle{
+                display: block;
+            }
+            #navlinks{
+                display: none;
+                flex-direction: column;
+                background: black;
+                color: white;
+                width: 100%;
+                position: absolute;
+                top:30px;
+                left: 0;
+            }
+            #navlinks.mobilemenu{
+                display: flex;
+            }
+            .dropdownmenu{
+                position: relative;
+            }
+            .menuoption {
+                display: none;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.9); /* Darker background */
+                color: white;
+                width: 100%;
+                /* padding: 10px; */
+                border-radius: 5px; /* Smooth corners */
+                margin-top: 5px;
+            }
+            .menuoption.active {
+                display: flex;
+            }
+            .menuoption a {
+                color: white !important;
+                /* padding: 8px 12px; */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle dividers */
+            }
+            .menuoption a:last-child {
+                border-bottom: none;
+            }
+            .menuoption a:hover {
+                background: rgba(255, 255, 255, 0.2); /* Soft hover effect */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul id="navlinks">
+            <li><a href="#">Home</a></li>
+            <li class="dropdownmenu" data-target="News">
+                <a href="#">News</a>
+                <div id="News" class="menuoption">
+                    <a href="#">Link1</a>
+                    <a href="#">Link2</a>
+                    <a href="#">Link3</a>
+                </div>
+            </li>
+            <li class="dropdownmenu" data-target="Dropdown"><a href="#" >
+                Dropdown
+                    <span><i class="fa-solid fa-angle-down"></i></span>
+                </a>
+                <div id="Dropdown" class="menuoption">
+                    <a href="#">Link1</a>
+                    <a href="#">Link2</a>
+                    <a href="#">Link3</a>
+                </div>
+            </li>
+            <li class="dropdownmenu" data-target="contact"><a href="#" >Contact</a></li>
+            <li class="dropdownmenu" data-target="about"><a href="#" >About</a></li>
+        </ul>
+        <div id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div> 
+    </nav>
+
+
+
+    <script>
+        let menu = document.querySelectorAll('.dropdownmenu');
+        let menuoptions = document.querySelectorAll('.menuoption');
+
+        menu.forEach(mn => {
+            mn.addEventListener("mouseenter",(e) => {
+                menuoptions.forEach(mo =>{
+                    mo.classList.remove("active");
+                })
+
+                let targetid = e.currentTarget.getAttribute("data-target");
+                let targetDropdown = document.getElementById(targetid);
+                if(targetDropdown)
+                    targetDropdown.classList.add("active");
+            })
+        })
+
+        document.addEventListener("mouseover", (e) => {
+            console.log(e.target.closest('.menuoption'));
+            let isMenu = e.target.closest('.menuoption');
+            let isDropDown = e.target.closest('.dropdownmenu');
+
+            if (!isMenu && !isDropDown){
+                menuoptions.forEach(moption =>{
+                    moption.classList.remove('active');
+                })
+            } 
+        })
+        document.getElementById("menu-toggle").addEventListener("click",(e)=>{
+            console.log('abv');
+            let nav = document.getElementById("navlinks").classList.toggle("mobilemenu");
+        })
+    </script>
+</body>
+</html>

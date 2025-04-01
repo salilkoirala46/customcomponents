@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salil Koirala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f4f4f4;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar h2{
+            color:black;
+        }
+        #menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #menu-toggle:hover {
+            color:dodgerblue;
+        }
+
+        #navlinks {
+            display: flex;
+            list-style: none;
+        }
+
+        #navlinks li {
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        #navlinks li a {
+            color: black;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+            padding: 8px 12px;
+        }
+        #navlinks li a:hover {
+            background: dodgerblue;
+            border-radius: 5px;
+            color: white;
+        }
+        #navlinks li.active {
+            background: dodgerblue;
+            border-radius: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            #menu-toggle {
+                display: block;
+                color: black;
+            }
+
+            #navlinks {
+                display: none;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.9);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 15px 0;
+                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+                transition: all 0.5s ease-in-out;
+            }
+
+            #navlinks.mobilemenu {
+                display: flex;
+            }
+
+            #navlinks li {
+                text-align: center;
+                padding: 15px;
+                width: 100%;
+                transition: all 0.3s ease;
+            }
+
+            #navlinks li:hover {
+                background: dodgerblue;
+            }
+
+            #navlinks li a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>Salil Koirala</h2>
+        <ul id="navlinks">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <div id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div> 
+    </nav>
+
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", () => {
+            document.getElementById("navlinks").classList.toggle("mobilemenu");
+        });
+    </script>
+
+</body>
+</html>
