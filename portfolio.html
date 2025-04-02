@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+        :root{
+            --blue:#1E90FF;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -17,12 +19,15 @@
         body {
             font-family: "Poppins", sans-serif;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
         }
         
         a {
             text-decoration: none;
         }
 
+        /* navbar header */
         .navbar {
             background: #fff;
             display: flex;
@@ -48,7 +53,7 @@
         }
 
         #menu-toggle:hover {
-            color:dodgerblue;
+            color:var(--blue);
         }
 
         #navlinks {
@@ -68,16 +73,302 @@
             padding: 8px 12px;
         }
         #navlinks li a:hover {
-            background: dodgerblue;
+            background: var(--blue);
             border-radius: 5px;
             color: white;
         }
         #navlinks li.active {
-            background: dodgerblue;
+            background: var(--blue);
             border-radius: 5px;
+        }
+        /* end of navbar */
+
+        /* intro section*/
+        #intro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 100px;
+            background: #fff; /* White background */
+            color: black;
+            padding: 80px 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 120px 30px 40px 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        #intro img {
+            width: 500px; /* Bigger size */
+            height: 500px; /* Keep it square */
+            object-fit: cover;
+            border: 5px solid #ddd; /* Subtle border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #intro img:hover {
+            transform: scale(1.05);
+        }
+
+        .intro_message {
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .intro_message h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333; /* Darker shade for contrast */
+        }
+
+        .intro_message p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .intro_message strong {
+            color: var(--blue);
+        }
+
+        .intro_message em {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--blue);
+        }
+
+        #skills {
+            text-align: center;
+            background: #fff; /* White background */
+            padding: 60px 20px;
+        }
+
+        #skills h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .skill {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .skill .icon img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+        }
+        .skill .icon{
+            display: flex;
+        }
+
+        .skill:hover {
+            background: dodgerblue;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .skill:hover .icon img {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        #Projects {
+            background-color: #f8f8f8;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        #Projects h2 {
+            font-size: 2.4rem;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            color: #222;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-card a {
+            font-weight: 600;
+            text-decoration: none;
+            color: #1E90FF;
+            border: 2px solid #1E90FF;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .project-card a:hover {
+            background-color: #1E90FF;
+            color: white;
+            border-color: #1E90FF;
+        }
+
+        .project-card p {
+            text-align: justify;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* contact */
+        #contact-form {
+            background: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        #contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        #contact-form p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .contact-form-container {
+            max-width: 800px;  /* Restrict form width */
+            margin: 0 auto;  /* Center the form */
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        input:focus, textarea:focus {
+            border : 2px solid var(--blue);
+        }
+        button {
+            background: var(--blue);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /*footer*/
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-container p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .social-links a:hover {
+            color: var(--blue);
         }
 
         @media screen and (max-width: 768px) {
+            /* navbar header */
             #menu-toggle {
                 display: block;
                 color: black;
@@ -108,7 +399,7 @@
             }
 
             #navlinks li:hover {
-                background: dodgerblue;
+                background: var(--blue);
             }
 
             #navlinks li a {
@@ -116,7 +407,35 @@
                 display: block;
                 width: 100%;
             }
+
+            /* intro */
+            #intro {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 20px;
+            }
+
+            #intro img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .intro_message h2 {
+                font-size: 1.8rem;
+            }
+
+            .intro_message p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            /* end intro */
+
+            .projects {
+                grid-template-columns: 1fr; /* Stack projects on smaller screens */
+            }
         }
+
+        /* end of navbar */
     </style>
 </head>
 <body>
@@ -132,6 +451,120 @@
             <i class="fa-solid fa-bars"></i>
         </div> 
     </nav>
+
+    <section id="intro">
+        <img src="intro.png" alt="My Picture">
+        <div class="intro_message">
+            <h2>About Me</h2>
+            <p>
+                I am a passionate Software Engineer with expertise in web development, backend systems, and cloud integration. 
+                My skill set includes <strong>Laravel, PHP, JavaScript, Vue.js, Golang, and Python</strong>, allowing me to build 
+                scalable and efficient applications.
+            </p>
+            <p>
+                Currently, I work at <strong>ContactSpace</strong>, where I develop and optimize contact center software, integrate cloud solutions with AWS, 
+                and improve system performance using RESTful APIs and Docker.
+            </p>
+            <p>
+                Beyond coding, I love problem-solving, collaborating in agile teams, and exploring AI/ML technologies.
+                With a Master's degree in Software Engineering, I am always eager to innovate and build amazing digital experiences.
+            </p>
+            <p><em>Let's create something extraordinary together!</em></p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill"><span class="icon"><img src="https://images.vexels.com/media/users/3/166477/isolated/lists/9bb722f0e85ddbc1ce0f064534fd2311-python-programming-language-icon.png" alt="python logo"></span>Python</div>
+            <div class="skill"><span class="icon"><img src="https://static-00.iconduck.com/assets.00/golang-icon-1594x2048-0xixr8zr.png" alt="golang logo"></span>Golang</div>
+            <div class="skill"><span class="icon"><img src="https://static.vecteezy.com/system/resources/previews/012/697/294/non_2x/3d-laravel-programming-framework-logo-free-png.png" alt="laravel logo">Laravel</div>
+            <div class="skill"><span class="icon"><img src="https://img.icons8.com/color/600/vue-js.png" alt="vue logo">Vue.js</div>
+            <div class="skill"><span class="icon"><img src="https://static-00.iconduck.com/assets.00/aws-icon-1024x612-hvye7lur.png" alt="aws logo">AWS</div>
+            <div class="skill"><span class="icon"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/database-programming-1832961-1556344.png" alt="database logo"> MySQL, PostgreSQL, MongoDB</div>
+            <div class="skill"><span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/919/919853.png" alt="docker logo"> Docker & Kubernetes</div>
+            <div class="skill"><span class="icon"><img src="https://cdn.iconscout.com/icon/free/png-256/free-git-logo-icon-download-in-svg-png-gif-file-formats--wordmark-programming-langugae-language-pack-logos-icons-1175195.png" alt="git logo"> Git, GitHub & CI/CD</div>
+        </div>
+    </section>
+    <section id="Projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Smartprobe</h3>
+                <p><strong>Smartprobe</strong> is an innovative food temperature monitoring system designed to ensure food safety by providing real-time temperature data. Built using <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, and <strong>PHP</strong>, the system automates temperature tracking for food storage and transportation, reducing the risk of contamination. The platform offers an intuitive interface, alerts for temperature deviations, and detailed analytics for compliance with safety standards.</p>
+                <a href="https://smartprobe.net.au" target="_blank">View Project</a>
+            </div>            
+    
+            <div class="project-card">
+                <h3>All Aspects Care</h3>
+                <p><strong>All Aspects Care</strong> is a comprehensive website for an NDIS (National Disability Insurance Scheme) service provider. The platform is designed to offer accessible information, resources, and support for individuals with disabilities and their families. Built using <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, the website provides easy navigation, user-friendly interfaces, and clear descriptions of the services offered. The site aims to streamline access to essential services, improve communication, and enhance the overall experience for users seeking NDIS support.</p>
+                <a href="https://allaspects-care.com.au/" target="_blank">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>RSNA Website</h3>
+                <p><strong>RSNA Website</strong> is a dynamic platform designed to serve as the online presence for the local community of the Royal South Australian Network Association (RSNA). Built using <strong>React.js</strong>, this website offers a user-friendly experience with features such as event listings, community updates, and member resources. The project also integrates cloud services for seamless hosting and deployment using <strong>AWS</strong>, ensuring scalability and reliability for users across different devices and locations.</p>
+                <a href="https://rsna.org.au/" target="_blank">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Medical Management System</h3>
+                <p><strong>Medical Management System</strong> is a comprehensive platform designed to streamline the management of medical records, appointments, and patient data. Built using <strong>Vue.js</strong> for the frontend, <strong>Laravel</strong> for the backend, and <strong>MySQL</strong> for data storage, this system enables healthcare providers to efficiently manage patient information, track appointments, and improve overall workflow. The project ensures data security, user authentication, and a seamless user experience for both medical staff and patients.</p>
+                <a href="https://github.com/salilkoirala46/MedicalManagementSystem" target="_blank">View Project</a>
+            </div>
+                
+        </div>
+    </section>
+    
+    <section id="contact-form">
+        <h2>Contact Me</h2>
+        <p>If you have any questions, project inquiries, or just want to connect, feel free to reach out using the form below.</p>
+    
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+    
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+    
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+                </div>
+    
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <section id="experience">
+
+    </section>
+    <footer>
+        <div class="footer-container">
+            <p>© 2025 Salil Koirala. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/salilkoirala46" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/salilkoirala46" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/yourprofile" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    
 
     <script>
         document.getElementById("menu-toggle").addEventListener("click", () => {
