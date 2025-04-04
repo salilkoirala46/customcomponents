@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salil Koirala</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         :root{
@@ -45,6 +46,8 @@
         .navbar h2{
             color:black;
         }
+
+        /* toggle menu mobile */
         #menu-toggle {
             display: none;
             font-size: 1.5rem;
@@ -56,6 +59,18 @@
             color:var(--blue);
         }
 
+        #menu-toggle-close {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #menu-toggle-close:hover {
+            color:var(--blue);
+        }
+        /*end*/
+        
         #navlinks {
             display: flex;
             list-style: none;
@@ -199,8 +214,8 @@
             transform: rotate(10deg) scale(1.1);
         }
 
-        #Projects {
-            background-color: #f8f8f8;
+        #projects {
+            background-color: #fff;
             padding: 60px 20px;
             text-align: center;
             border-radius: 10px;
@@ -208,71 +223,70 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
-        #Projects h2 {
+        #projects h2 {
             font-size: 2.4rem;
             margin-bottom: 30px;
             color: #333;
             font-weight: bold;
         }
 
-        .projects {
+        .projects-gallery {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
 
         .project-card {
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: left;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            border-radius: 10px;
             overflow: hidden;
+            transition: transform 0.3s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
         }
 
-        .project-card h3 {
-            font-size: 1.6rem;
-            color: #222;
-            margin-bottom: 15px;
-            font-weight: 600;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
         }
 
-        .project-card p {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
+        .project-card:hover .overlay {
+            opacity: 1;
         }
 
-        .project-card a {
-            font-weight: 600;
-            text-decoration: none;
-            color: #1E90FF;
-            border: 2px solid #1E90FF;
-            padding: 8px 20px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .project-card a:hover {
-            background-color: #1E90FF;
+        .overlay h3 {
             color: white;
-            border-color: #1E90FF;
+            margin-bottom: 10px;
         }
 
-        .project-card p {
-            text-align: justify;
-            line-height: 1.6;
-            color: #555;
+        .view-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background-color: #cc5500;
         }
 
         /* contact */
@@ -455,12 +469,26 @@
         }
 
         @media screen and (max-width: 768px) {
-            /* navbar header */
+            /* menu toggle */
             #menu-toggle {
                 display: block;
                 color: black;
             }
-
+            #menu-toggle.close {
+                display: none;
+                color: black;
+            }
+            #menu-toggle-close {
+                display: none;
+                color: black;
+            }
+            #menu-toggle-close.open {
+                display: block;
+                color: black;
+            }
+            /*end*/
+            
+            /* navbar header */
             #navlinks {
                 display: none;
                 flex-direction: column;
@@ -561,14 +589,17 @@
     <nav class="navbar">
         <h2>Salil Koirala</h2>
         <ul id="navlinks">
-            <li class="active"><a href="#">About</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Experience</a></li>
-            <li><a href="#">Contact</a></li>
+            <li class="active"><a href="#intro">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#work_experience">Experience</a></li>
+            <li><a href="#contact-form">Contact</a></li>
         </ul>
         <div id="menu-toggle">
             <i class="fa-solid fa-bars"></i>
-        </div> 
+        </div>
+        <div id="menu-toggle-close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>  
     </nav>
 
     <section id="intro">
@@ -599,33 +630,36 @@
             <div class="skill"><span class="icon"><img src="https://cdn.iconscout.com/icon/free/png-256/free-git-logo-icon-download-in-svg-png-gif-file-formats--wordmark-programming-langugae-language-pack-logos-icons-1175195.png" alt="git logo"> Git, GitHub & CI/CD</div>
         </div>
     </section>
-    <section id="Projects">
+    <section id="projects">
         <h2>Projects</h2>
-        <div class="projects">
-            <div class="project-card">
-                <h3>Smartprobe</h3>
-                <p><strong>Smartprobe</strong> is an innovative food temperature monitoring system designed to ensure food safety by providing real-time temperature data. Built using <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, and <strong>PHP</strong>, the system automates temperature tracking for food storage and transportation, reducing the risk of contamination. The platform offers an intuitive interface, alerts for temperature deviations, and detailed analytics for compliance with safety standards.</p>
-                <a href="https://smartprobe.net.au" target="_blank">View Project</a>
-            </div>            
+        <div class="projects-gallery">
+            <div class="project-card" style="background-image: url('smartprobe.png');">
+                <div class="overlay">
+                    <h3>Smartprobe</h3>
+                    <a href="https://smartprobe.net.au" target="_blank" class="view-btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card" style="background-image: url('allaspectscare.png');">
+                <div class="overlay">
+                    <h3>All Aspects Care</h3>
+                    <a href="https://allaspects-care.com.au/" target="_blank" class="view-btn">View Project</a>
+                </div>
+            </div>
     
-            <div class="project-card">
-                <h3>All Aspects Care</h3>
-                <p><strong>All Aspects Care</strong> is a comprehensive website for an NDIS (National Disability Insurance Scheme) service provider. The platform is designed to offer accessible information, resources, and support for individuals with disabilities and their families. Built using <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, the website provides easy navigation, user-friendly interfaces, and clear descriptions of the services offered. The site aims to streamline access to essential services, improve communication, and enhance the overall experience for users seeking NDIS support.</p>
-                <a href="https://allaspects-care.com.au/" target="_blank">View Project</a>
+            <div class="project-card" style="background-image: url('rsna.png');">
+                <div class="overlay">
+                    <h3>RSNA Website</h3>
+                    <a href="https://rsna.org.au/" target="_blank" class="view-btn">View Project</a>
+                </div>
             </div>
-            
-            <div class="project-card">
-                <h3>RSNA Website</h3>
-                <p><strong>RSNA Website</strong> is a dynamic platform designed to serve as the online presence for the local community of the Royal South Australian Network Association (RSNA). Built using <strong>React.js</strong>, this website offers a user-friendly experience with features such as event listings, community updates, and member resources. The project also integrates cloud services for seamless hosting and deployment using <strong>AWS</strong>, ensuring scalability and reliability for users across different devices and locations.</p>
-                <a href="https://rsna.org.au/" target="_blank">View Project</a>
+    
+            <div class="project-card" style="background-image: url('medical.png');">
+                <div class="overlay">
+                    <h3>Medical Management System</h3>
+                    <a href="https://github.com/salilkoirala46/MedicalManagementSystem" target="_blank" class="view-btn">View Project</a>
+                </div>
             </div>
-            
-            <div class="project-card">
-                <h3>Medical Management System</h3>
-                <p><strong>Medical Management System</strong> is a comprehensive platform designed to streamline the management of medical records, appointments, and patient data. Built using <strong>Vue.js</strong> for the frontend, <strong>Laravel</strong> for the backend, and <strong>MySQL</strong> for data storage, this system enables healthcare providers to efficiently manage patient information, track appointments, and improve overall workflow. The project ensures data security, user authentication, and a seamless user experience for both medical staff and patients.</p>
-                <a href="https://github.com/salilkoirala46/MedicalManagementSystem" target="_blank">View Project</a>
-            </div>
-                
         </div>
     </section>
     
@@ -661,7 +695,7 @@
         <p>If you have any questions, project inquiries, or just want to connect, feel free to reach out using the form below.</p>
     
         <div class="contact-form-container">
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form action="https://formspree.io/f/xeoarrzv" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required placeholder="Enter your name">
@@ -703,8 +737,44 @@
     </footer>
 
     <script>
+        let navmenu = document.querySelectorAll('#navlinks li');
+
         document.getElementById("menu-toggle").addEventListener("click", () => {
+            document.getElementById("menu-toggle").classList.add("close");
+            document.getElementById("menu-toggle-close").classList.add("open");
             document.getElementById("navlinks").classList.toggle("mobilemenu");
+        });
+        document.getElementById("menu-toggle-close").addEventListener("click", () => {
+            document.getElementById("menu-toggle").classList.remove("close");
+            document.getElementById("menu-toggle-close").classList.remove("open");
+            document.getElementById("navlinks").classList.toggle("mobilemenu");
+        });
+
+        document.querySelectorAll('#navlinks a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                navmenu.forEach(menu => {
+                    menu.classList.remove("active");
+                })
+
+                const targetlistitem = e.target.closest("li");
+                targetlistitem.classList.add("active");
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust offset for navbar height
+                        behavior: 'smooth'
+                    });
+                }
+
+                /*toggle mobie menu*/
+                document.getElementById("navlinks").classList.toggle("mobilemenu");
+                document.getElementById("menu-toggle").classList.toggle("close");
+                document.getElementById("menu-toggle-close").classList.toggle("open");
+            });
         });
     </script>
 
