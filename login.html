@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <style>
+        :root{
+            --blue:#2196F3;
+        }
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100vh;
+            background: #fff;
+            transition: background 0.5s ease-in-out;
+        }
+        body.close{
+            background: #ddd;
+        }
+        #initiate_login{
+            position:absolute;
+            top:10px;
+            left:20px;
+            padding: 10px;
+            width:100px;
+            background: green;
+            border:none;
+            color:white;
+        }
+        .wrapper{
+            background: white;
+            padding:20px 20px;
+            width: 400px;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-60px);
+            transition: transform 0.5s ease-in-out;
+        }
+        .wrapper.open{
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .image_avatar img{
+            border-radius: 50%;
+            max-width: 200px;
+            min-height: 200px;
+        }
+        .form_container{
+            width: 100%;
+            max-width: 300px;
+        }
+        .form_container form{
+            padding: 10px 20px;
+        }
+        .form_element_container{
+            padding:10px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .form_element_container input{
+            border: 1px solid #ddd;
+            padding:10px 5px;
+            line-height: 1.3;
+        }
+        .form_element_container input:focus{
+            border: 2px solid var(--blue) !important;
+            outline: none;
+        }
+        .form_element_container label{
+            font-weight: bold;
+        }
+        .form_container button{
+            padding:10px;
+            width: 100%;
+            margin: 5px 0;
+            cursor:pointer;
+            background: var(--blue);
+            border: none;
+            color:white;
+            font-size: 14px;
+            transition: all 0.3s ease-in-out;
+        }
+        .form_container button:hover{
+            transform: scale(1.1);
+        }
+        .form_checkbox{
+            margin: 10px 0;
+        }
+        .form_checkbox span{
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" name="initiate_login" id="initiate_login" data-target="modal"> Login</button>
+    <div class="wrapper" id="modal">
+        <div class="image_avatar">
+            <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="avatar image">
+        </div>
+        <div class="form_container">
+            <form>
+                <div class="form_element_container">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="Enter Username">
+                </div>
+                <div class="form_element_container">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Enter Password">
+                </div>
+                <button type="submit" name="login">Login</button>
+                <div class="form_checkbox">
+                    <input type="checkbox" name="remember_me"><span>Remember me</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let initiateLogin = document.getElementById("initiate_login")
+        initiateLogin.addEventListener("click", (e) =>{
+            let targetId = document.getElementById(initiateLogin.getAttribute("data-target"));
+            console.log(targetId);
+            targetId.classList.add("open");
+            document.querySelector("body").classList.add("close");
+            initiateLogin.style.display="none";
+        })
+    </script>
+</body>
+</html>
